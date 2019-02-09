@@ -1,34 +1,28 @@
-[user]
-	name =
-	email =
-
 [alias]
-	# one-line log
 	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --date=short
-
 	a = add
 	ap = add -p
-	c = commit --verbose
+	c = commit
 	cm = commit -m
-	m = commit --amend --verbose
+	m = commit --amend
 	mg = merge
 	rb = rebase
-
 	d = diff
 	ds = diff --stat
 	dc = diff --cached
-
 	s = status -s
 	co = checkout
 	cob = checkout -b
 	f = fetch --all --tags
-	stp = "!git stash && git pull && git stash pop"
+	stp = !git stash && git pull && git stash pop
 	ph = push
 	rv = remote -v
-
-	# list branches sorted by last modified
-	#b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
 	b = branch --list -a -v
+	la = !git config -l | grep alias | cut -c 7-
+[pull]
+	rebase = preserve
+[fetch]
+	prune = true
+[rebase]
+	autoStash = true
 
-	# list aliases
-	la = "!git config -l | grep alias | cut -c 7-"
