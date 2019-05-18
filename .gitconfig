@@ -14,6 +14,7 @@
 	co = checkout
 	cob = checkout -b
 	f = fetch --all --tags
+	p = pull
 	stp = !git stash && git pull && git stash pop
 	ph = push
 	rv = remote -v
