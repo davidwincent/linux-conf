@@ -35,6 +35,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'leshill/vim-json'
 Plugin 'w0rp/ale'
+Plugin 'scrooloose/nerdtree'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
@@ -49,14 +50,14 @@ let g:autopep8_on_save = 1
 
 " Plugin 'vim-syntastic/syntastic'
 " https://github.com/vim-syntastic/syntastic
-let g:syntastic_python_checkers = ['pylint']
+"let g:syntastic_python_checkers = ['pylint']
 "set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
 "set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
 
 " Plugin 'pangloss/vim-javascript'
 let g:javascript_plugin_flow = 1
@@ -98,7 +99,7 @@ set laststatus=2
 set confirm
 set visualbell
 set number
-set autoindent
+"set autoindent
 set copyindent
 set shiftround
 set expandtab
@@ -138,6 +139,8 @@ nmap <silent> <C-K> :wincmd k<CR>
 nmap <silent> <C-J> :wincmd j<CR>
 nmap <silent> <C-H> :wincmd h<CR>
 nmap <silent> <C-L> :wincmd l<CR>
+
+nmap <leader>f      :NERDTreeToggle<CR>
 
 autocmd BufWritePost .vimrc source %
 
