@@ -20,10 +20,17 @@
 	rv = remote -v
 	b = branch --list -a -v
 	la = !git config -l | grep alias | cut -c 7-
+[user]
+	name = Wincent
+	email = 3088566+davidwincent@users.noreply.github.com
+[init]
+	defaultBranch = main
 [pull]
-	rebase = preserve
-[fetch]
-	prune = true
-[rebase]
-	autoStash = true
-
+	rebase = false
+[merge]
+	tool = nvimdiff
+	conflictstyle = diff3
+[mergetool]
+	prompt = false
+[color "diff"]
+	whitespace = red reverse

@@ -1,7 +1,11 @@
-/*
-!/.gitignore
-!/.vimrc
-!/.vim/ftplugin
-!/.tmux.conf
-!/.gitconfig
+*
+
+!.gitconfig
+!.gitignore
+!.zshrc
+!.tmux.conf
+!.gitconfig
+!.profile
+!.zshenv
+!.bash_aliases
 
