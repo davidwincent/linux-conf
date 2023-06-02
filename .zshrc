@@ -21,7 +21,7 @@ export ZSH="$HOME/.zplug/repos/robbyrussell/oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="sorin"
+ZSH_THEME="awesomepanda"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -131,6 +131,10 @@ if [ -f ~/secrets.env ]; then
     . ~/secrets.env
 fi
 
-export KUBE_EDITOR="$HOME/bin/nvim.appimage"
+export KUBE_EDITOR="$HOME/bin/nvim"
 export DOCKER_CLI_EXPERIMENTAL=enabled
 export DOCKER_BUILDKIT=1
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

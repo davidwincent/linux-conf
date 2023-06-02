@@ -16,8 +16,8 @@ install-nvim:
     echo "File is valid"
   fi
 
-  mv ~/nvim.appimage ~/bin/
-  chmod ug+x ~/bin/nvim.appimage
+  mv ~/nvim.appimage ~/bin/nvim
+  chmod ug+x ~/bin/nvim
 
 kickstart-nvim:
   #!/usr/bin/env bash
@@ -29,3 +29,29 @@ kickstart-nvim:
   fi
 
   git clone https://github.com/nvim-lua/kickstart.nvim.git "$HOME/.config/nvim"
+
+kill-zombies:
+  #!/usr/bin/env bash
+  set -x
+
+  # Get the current shell's process ID
+  current_pid=$$
+
+  # Get the user ID of the current user
+  current_user=$(id -u)
+
+  # Get a list of all processes started by the current user
+  processes=$(ps -u $current_user -o pid=)
+
+  # Kill all processes except the current shell and SSH process
+  for pid in $processes; do
+    # Skip the current shell's process ID
+    if [ $pid -ne $current_pid ]; then
+      # Check if the process is the SSH process
+      cmd=$(ps -p $pid -o comm=)
+      if [[ $cmd != "sshd"* ]]; then
+        kill $pid
+      fi
+    fi
+  done
+

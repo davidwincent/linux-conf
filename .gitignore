@@ -8,6 +8,7 @@
 !.profile
 !.zshenv
 !.bash_aliases
+!.bash_profile
 !Justfile
 !ssh_pub/
 !ssh_pub/id_ed25519.pub
