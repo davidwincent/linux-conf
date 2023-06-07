@@ -1,3 +1,2 @@
-# alias kubectl='microk8s kubectl'
-# alias nvim='nvim.appimage'
-
+alias k='kubectl'
+# alias act='gh extension exec act -- '

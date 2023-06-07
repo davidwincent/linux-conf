@@ -132,8 +132,14 @@ if [ -f ~/secrets.env ]; then
 fi
 
 export KUBE_EDITOR="$HOME/bin/nvim"
+export EDITOR="$HOME/bin/nvim"
 export DOCKER_CLI_EXPERIMENTAL=enabled
 export DOCKER_BUILDKIT=1
+export CONTAINERD_SNAPSHOTTER=fuse-overlayfs
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"

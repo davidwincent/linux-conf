@@ -2,6 +2,7 @@
 	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --date=short
 	a = add
 	ap = add -p
+	ad = !git add . && git diff --cached
 	c = commit
 	cm = commit -m
 	m = commit --amend
