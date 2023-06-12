@@ -141,14 +141,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# map exa commands to normal ls commands
-alias ll="exa -l -g --icons"
-alias ls="exa --icons"
-alias lt="exa --tree --icons -a -I '.git|__pycache__|.mypy_cache|.ipynb_checkpoints'"
-
-# show file previews for fzf using bat
-alias fp="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
-
 # starship prompt
 alias gt="starship toggle gcloud disabled" # toggle gcloud info on the promp
 
