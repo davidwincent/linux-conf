@@ -66,6 +66,33 @@ kill-zombies:
     fi
   done
 
+install-buildkit:
+  #!/usr/bin/env bash
+  set -x
+  
+  tag="v0.11.6"
+  version="buildkit-v0.11.6.linux-amd64.tar.gz"
+
+  curl -L -o ~/$version https://github.com/moby/buildkit/releases/download/$tag/$version
+
+  tarfile="$HOME/$version"
+
+  sudo tar Cxzvvf /usr/local $tarfile
+
+install-protobuf:
+  #!/usr/bin/env bash
+  set -x
+  
+  tag="v23.2"
+  version="protoc-23.2-linux-x86_64"
+
+  curl -L -o ~/$version.zip https://github.com/protocolbuffers/protobuf/releases/download/$tag/$version.zip
+
+  zipfile="$HOME/$version.zip"
+
+  unzip $zipfile -d ./$version
+  sudo cp -r ./$version/bin/* /usr/local/bin
+
 install-nerdctl:
   #!/usr/bin/env bash
   set -x
@@ -89,6 +116,7 @@ install-nerdctl:
   sudo tar Cxzvvf /usr/local/bin $tarfile
 
   containerd-rootless-setuptool.sh install
+
 
 upgrade-kernel:
   #!/usr/bin/env bash

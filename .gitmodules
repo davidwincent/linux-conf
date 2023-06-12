@@ -1,0 +1,6 @@
+[submodule "modules/containerd"]
+	path = modules/containerd
+	url = https://github.com/containerd/containerd.git
+[submodule ".config/nvim"]
+	path = .config/nvim
+	url = git@github.com:davidwincent/kickstart.nvim.git

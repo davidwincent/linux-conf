@@ -18,3 +18,6 @@ PATH="$PATH:/opt/apache-maven-3.6.3/bin"
 # linkerd CLI
 PATH="$PATH:$HOME/.linkerd2/bin"
 
+# go
+PATH="$PATH:/usr/local/go/bin"
+

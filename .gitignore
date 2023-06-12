@@ -12,3 +12,9 @@
 !Justfile
 !ssh_pub/
 !ssh_pub/id_ed25519.pub
+!modules/
+!modules/containerd
+!.config/
+!.config/nvim
+!.config/starship.toml
+
