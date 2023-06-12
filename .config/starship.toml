@@ -6,7 +6,15 @@ add_newline = false
 # symbol = "➜"     # The "symbol" segment is being set to "➜"
 # error_symbol = "⛔️"
 # use_symbol_for_status = true
+# ssh_symbol = ""
 
 [username]
 disabled = true
+
+
+[hostname]
+ssh_only = false
+format = '🔒 [$hostname](bold red): '
+trim_at = '.local'
+disabled = false
 
