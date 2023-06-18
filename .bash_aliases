@@ -13,3 +13,5 @@ alias la="exa -l -a -g --icons"
 # show file previews for fzf using bat
 alias fp="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
+alias vim="nvim"
+

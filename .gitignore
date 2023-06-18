@@ -18,4 +18,7 @@
 !.config/
 !.config/nvim
 !.config/starship.toml
+!.tmux/
+!.tmux/plugins/
+!.tmux/plugins/tpm
 

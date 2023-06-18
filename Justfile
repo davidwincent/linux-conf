@@ -118,6 +118,90 @@ install-nerdctl:
   containerd-rootless-setuptool.sh install
 
 
+install-libevent:
+  #!/usr/bin/env bash
+  set -x
+  
+  tag="release-2.1.12-stable"
+  version="libevent-2.1.12-stable"
+
+  curl -L -o ~/$version.tar.gz https://github.com/libevent/libevent/releases/download/$tag/$version.tar.gz
+  curl -L -o ~/$version.tar.gz.asc https://github.com/libevent/libevent/releases/download/$tag/$version.tar.gz.asc
+
+  gpg_verify="$(gpg --keyserver-options auto-key-retrieve --verify ~/$version.tar.gz.asc 2>&1 || exit 0)"
+
+  if [[ "$gpg_verify" != *"new key but contains no user ID - skipped"* ]]; then
+    echo "File is invalid"
+    exit 1
+  else
+    echo "File is valid"
+  fi
+  tarfile="$HOME/$version.tar.gz"
+
+  tar -zxf $tarfile
+  cd $version/
+  ./configure --prefix=/usr/local --enable-shared
+  make && sudo make install
+
+install-ncurses:
+  #!/usr/bin/env bash
+  set -x
+  
+  tag="current"
+  version="ncurses-6.4-20230107"
+
+  curl -L -o ~/$version.tgz https://invisible-island.net/archives/ncurses/$tag/$version.tgz
+  curl -L -o ~/$version.tgz.asc https://invisible-island.net/archives/ncurses/$tag/$version.tgz.asc
+
+  gpg_verify="$(gpg --keyserver-options auto-key-retrieve --verify ~/$version.tgz.asc 2>&1 || exit 0)"
+
+  if [[ "$gpg_verify" != *"new key but contains no user ID - skipped"* ]]; then
+    echo "File is invalid"
+    exit 1
+  else
+    echo "File is valid"
+  fi
+  tarfile="$HOME/$version.tgz"
+
+  tar -zxf $tarfile
+  cd $version/
+  ./configure --prefix=usr/local --with-shared --with-termlib --enable-pc-files --with-pkg-config-libdir=$HOME/.local/lib/pkgconfig
+  make && sudo make install
+
+install-tmux:
+  #!/usr/bin/env bash
+  sudo apt update
+  sudo apt install libevent-dev ncurses-dev build-essential bison pkg-config automake
+  set -x
+
+  tag="refs/tags"
+  version="3.3a"
+
+  curl -L -o ~/tmux-$version.tar.gz https://github.com/tmux/tmux/archive/$tag/$version.tar.gz
+
+  tarfile="$HOME/tmux-$version.tar.gz"
+  tar -zxf $tarfile
+  cd tmux-$version/
+  sh autogen.sh
+  PKG_CONFIG_PATH=usr/local/lib/pkgconfig sh ./configure --prefix=/usr/local
+  make && sudo make install
+
+install-sqlite-x86:
+  #!/usr/bin/env bash
+  set -x
+
+  tag="2023"
+  version="sqlite-tools-linux-x86-3420000"
+  2023/sqlite-tools-linux-x86-3420000.zip
+
+  curl -L -o ./$version.zip https://www.sqlite.org/$tag/$version.zip
+
+  zipfile="./$version.zip"
+
+  unzip -o $zipfile -d .
+  chmod -x $version/*
+  find $version -maxdepth 1 -type f -printf '%f\n' | xargs -i bash -c 'sudo cp $HOME/$2/$1 /usr/local/bin/  ; sudo chmod +x /usr/local/bin/$1; echo /usr/local/bin/$1 installed.' - {} $version
+
 upgrade-kernel:
   #!/usr/bin/env bash
   ##
@@ -160,4 +244,10 @@ upgrade-kernel:
   sudo update-grub
 
   echo "You made it! now reboot."
+
+enable-all-the-watches:
+  #!/usr/bin/env bash
+
+  sudo sysctl -w fs.inotify.max_user_watches=100000 
+  sudo sysctl -w fs.inotify.max_user_instances=100000
 

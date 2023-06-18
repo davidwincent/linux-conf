@@ -21,3 +21,6 @@ PATH="$PATH:$HOME/.linkerd2/bin"
 # go
 PATH="$PATH:/usr/local/go/bin"
 
+# export LD_LIBRARY_PATH="$HOME/.local/lib"
+# export LD_RUN_PATH="$LD_LIBRARY_PATH"
+export MANPATH="$MANPATH:$HOME/.local/share/man"

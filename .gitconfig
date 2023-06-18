@@ -17,10 +17,11 @@
 	f = fetch --all --tags
 	p = pull
 	stp = !git stash && git pull && git stash pop
-	ph = push
+	pu = push
 	rv = remote -v
 	b = branch --list -a -v
 	la = !git config -l | grep alias | cut -c 7-
+	sy = !git pull --rebase && git push
 [user]
 	name = Wincent
 	email = 3088566+davidwincent@users.noreply.github.com
